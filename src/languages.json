@@ -1,0 +1,38 @@
+{"portuguese":
+[
+  {
+      "lblUser": "Usuário:",
+      "lblDir": "Diretório:",
+      "btnDownloadRepositories": "Baixar Repositórios",
+      "lblStatusMsg1": "Aguardando Usuário...",
+      "lblStatusMsg2": "Nenhum erro por enquanto...",
+      "lblStatusMsg3": "[ERRO] A solicitação expirou ao buscar estatísticas!",
+      "lblStatusMsg4": "[ERRO] Erro de conexão ao buscar estatísticas!",
+      "lblStatusMsg5": "[ERRO] Erro de soquete ao buscar estatísticas!",
+      "lblStatusMsg6": "Não foi possível buscar a lista de repositórios.",
+      "lblStatusMsg7": "[ERRO] Nome de usuário não encontrado. (O servidor retornou o status 404)",
+      "lblTheme": [
+          "Claro",
+          "Escuro"
+      ]
+  }
+],
+"english": [
+  {
+    "lblUser": "User:",
+      "lblDir": "Dir:",
+      "btnDownloadRepositories": "Download Repositories",
+      "lblStatusMsg1": "Waiting for User...",
+      "lblStatusMsg2": "No errors for now...",
+      "lblStatusMsg3": "[ERROR] Request timed out while fetching statistics!",
+      "lblStatusMsg4": "[ERROR] Connection error fetching statistics!",
+      "lblStatusMsg5": "[ERROR] Socket error fetching stats!",
+      "lblStatusMsg6": "Could not fetch list of repositories.",
+      "lblStatusMsg7": "[ERROR] Username not found. (Server returned status 404)",
+      "lblTheme": [
+          "Light",
+          "Dark"
+      ]
+  }
+]
+}
