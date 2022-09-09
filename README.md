@@ -11,6 +11,9 @@ Clone all github repositories from a user
 - Settings
 - Multi Language
 
+## To do
+- [ ] Clone repositories from Organizations
+
 ## Requirements
 - PySimpleGUI
 - Requests
