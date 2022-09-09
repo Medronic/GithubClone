@@ -11,6 +11,7 @@
       "lblStatusMsg5": "[ERRO] Erro de soquete ao buscar estatísticas!",
       "lblStatusMsg6": "Não foi possível buscar a lista de repositórios.",
       "lblStatusMsg7": "[ERRO] Nome de usuário não encontrado. (O servidor retornou o status 404)",
+      "lblStatusPath1": "O caminho do diretório não foi encontrado.",
       "lblTheme": [
           "Claro",
           "Escuro"
@@ -29,6 +30,7 @@
       "lblStatusMsg5": "[ERROR] Socket error fetching stats!",
       "lblStatusMsg6": "Could not fetch list of repositories.",
       "lblStatusMsg7": "[ERROR] Username not found. (Server returned status 404)",
+      "lblStatusPath1": "The directory path was not found.",
       "lblTheme": [
           "Light",
           "Dark"

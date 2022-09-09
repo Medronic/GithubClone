@@ -23,39 +23,13 @@ def SaveLogs(p1):
         date = datetime.datetime.now()
         outfile.write(f"{date} - {p1}")
 
-# Função para formatar o List Box removendo espaços e caracteres, apenas deixando números
+# Função para salvar as configurações
 
-def getUserProfile():
-    return os.path.join(os.environ['USERPROFILE'], "Downloads")
-
-def format_string(d1):
-    global result_final
-    numbers = ["0","1","2","3","4","5","6","7","8","9"]
-    for i in range(len(d1)):
-        if d1[i] not in numbers:
-            d1 = d1[:i] + " " + d1[i+1:]
-    result_final = d1
-
-# Função para Ler a Lista de Games
-
-# def LoadListGames():
-#     print("Carregando Lista de Jogos...")
-
-#     if os.path.isfile('my_list.json'):
-#         arquivo_json = open('my_list.json', 'r', encoding='utf-8')
-#         data = json.loads(arquivo_json.read())
-
-#         global gameID
-#         global gameName
-
-#         gameID = data["Games"]['id']
-#         # gameName = data["Games"]['name']
-
-#         for i in range(len(gameID)):
-#             print(gameID[i])
-#         else:
-#             print("Erro ao carregar Lista de Jogos!")
-
+def SaveSettings(p1 = None, p2 = None, p3 = None, p4 = None, p5 = None, p6 = None):
+    data = {}
+    data['Settings'] = {'Application': {'Name': AppName, 'Description': AppDescription, 'Author': AppAuthor, 'AuthorNickname': AppAuthorNickname, 'Version': AppVersion}, 'UI': {'Theme': p1, 'Language': p2, 'DownloadPath': p3}}
+    with open('settings.json', 'w', encoding='utf-8') as outfile:
+        json.dump(data, outfile)
 
 # Função para Ler as Configurações do Arquivo JSON
 
@@ -115,17 +89,12 @@ def LoadSettings():
         global lngStatusMsg5
         global lngStatusMsg6
         global lngStatusMsg7
-        global lngStatusMsg8
+
+        global lngStatusPath1
 
         global lngLblTheme
 
-        # Variáveis Globais da Aplicação para Twitch
-
-        # global Username
-        # global ClientID
-        # global ClientSecret
-
-        # Configurações da Aplicação
+        # Variáveis Globais de Configurações da Aplicação
 
         lngLblUser = data[f'{stgLang}'][0]['lblUser']
         lngLblDir = data[f'{stgLang}'][0]['lblDir']
@@ -137,6 +106,7 @@ def LoadSettings():
         lngStatusMsg5 = data[f'{stgLang}'][0]['lblStatusMsg5']
         lngStatusMsg6 = data[f'{stgLang}'][0]['lblStatusMsg6']
         lngStatusMsg7 = data[f'{stgLang}'][0]['lblStatusMsg7']
+        lngStatusPath1 = data[f'{stgLang}'][0]['lblStatusPath1']
 
         lngLblTheme = data[f'{stgLang}'][0]['lblTheme']
 
@@ -145,25 +115,31 @@ def LoadSettings():
     else:
         SaveLogs(f"Language file settings not found! Creating default language file...\n")
 
-# Função para salvar as configurações
+# Função para pegar a pasta de Downloads do usuário
 
-def SaveSettings(p1 = None, p2 = None, p3 = None, p4 = None, p5 = None, p6 = None):
-    data = {}
-    # data['Settings'] = {'Username': p1, 'ClientID': p2, 'ClientSecret': p3} # Working
-    data['Settings'] = {'Application': {'Name': AppName, 'Description': AppDescription, 'Author': AppAuthor, 'AuthorNickname': AppAuthorNickname, 'Version': AppVersion}, 'UI': {'Theme': p1, 'Language': p2, 'DownloadPath': p3}}
-    with open('settings.json', 'w', encoding='utf-8') as outfile:
-        json.dump(data, outfile)
+def GetDownloadPath():
+    if os.name == 'posix':
+        return os.path.expanduser('~/Downloads')
+    elif os.name == 'nt':
+        return os.path.join(os.environ['USERPROFILE'], 'Downloads')
+    else:
+        return os.getcwd()
 
-def ThemeLang():
-    for i in range(len(stgTheme)):
-        return stgTheme[i]
+# Função para verificar se o diretório existe
 
+def VerifyPath(path):
+    if os.path.isdir(path):
+        return True
+    else:
+        return False
+
+# Função para baixar os repositórios
 def DownloadRepositories(user, path):
     global status
 
     url = 'https://api.github.com/users/{0}/repos'.format(user)
     error = False
-    status = f"Nenhum erro por enquanto..."
+    status = f"No errors for now!"
 
     try:
         r = requests.get(url, timeout=10)
@@ -215,4 +191,3 @@ def DownloadRepositories(user, path):
 
         call(['git', 'clone', data[i]['clone_url']])
         status = 'All repositories cloned successfully!'
-        SaveLogs(status)
