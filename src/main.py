@@ -13,38 +13,38 @@ sg.theme("DarkPurple4")
 DownloadFolder = md.GetDownloadPath()
 
 main = [
-    [sg.Text(f'{md.lngLblUser}', key='lblUser'), sg.Input(key='github_user', size=(45, 1))],
-    [sg.Text(f'{md.lngLblDir}', key='lblDir'), sg.Input(default_text=f'{DownloadFolder}', key='download_path', size=(42, 1))],
+    [sg.Text(f'{md.lngMainTab_lblUser}', key='lblUser'), sg.Input(key='github_user', size=(45, 1))],
+    [sg.Text(f'{md.lngMainTab_lblDir}', key='lblDir'), sg.Input(default_text=f'{DownloadFolder}', key='download_path', size=(42, 1))],
     
-    [sg.Button(f'{md.lngBtnDownloadRepositories}', key='download_repositories', size=(20, 1))],
+    [sg.Button(f'{md.lngMainTab_BtnDownloadRepositories}', key='download_repositories', size=(20, 1))],
 
-    [sg.Text('Status: '), sg.Text(f'{md.lngStatusMsg1}', key='lblstatus')],
+    [sg.Text(f'Status: '), sg.Text(f'{md.lngMainTab_StatusMsg1}', key='lblstatus')],
 ]
 
 settings = [
 
-    [sg.Text(f'Theme', key='lblTheme'), sg.Drop(values=('Dark', 'Light'), default_value=f'{md.stgTheme}', key='stg_theme', readonly=True)],
-    [sg.Text(f'Language', key='lblLanguage'), sg.Drop(values=('english', 'portuguese'), default_value=f'{md.stgLang}', key='stg_language', readonly=True)],
+    [sg.Text(f'{md.lngSettingsTab_lblTheme}', key='lblTheme'), sg.Drop(values=('Dark', 'Light'), default_value=f'{md.stgTheme}', key='stg_theme', readonly=True)],
+    [sg.Text(f'{md.lngSettingsTab_lblLanguage}', key='lblLanguage'), sg.Drop(values=('english', 'portuguese'), default_value=f'{md.stgLang}', key='stg_language', readonly=True)],
 
-    [sg.Text('Default Dir:', key='lblDefaultDir'), sg.Input(default_text=f'{md.stgDownloadPath}', key='stg_downloadpath', size=(42, 1), tooltip='Please, add exactly Path!')],
-    [sg.Button('Save Settings', key='btnSaveSettings',
+    [sg.Text(f'{md.lngSettingsTab_lblDefaultDir}', key='lblDefaultDir'), sg.Input(default_text=f'{md.stgDownloadPath}', key='stg_downloadpath', size=(42, 1), tooltip='Please, add exactly Path!')],
+    [sg.Button(f'{md.lngSettingsTab_btnSaveSettings}', key='btnSaveSettings',
                size=(18, 1), font='15px')]
                
 ]
 
 about = [
     
-    [sg.Text(f'{md.AppName}', font='15px')],
-    [sg.Text(f'Description: {md.AppDescription}', font='15px')],
-    [sg.Text(f'Created by: {md.AppAuthor} - {md.AppAuthorNickname}', font='15px')],
+    # [sg.Text(f'{md.AppName}', font='15px')],
+    [sg.Text(f'{md.lngAboutTab_lblDescription} {md.AppDescription}', font='15px')],
+    [sg.Text(f'{md.lngAboutTab_lblAuthor} {md.AppAuthor} - {md.AppAuthorNickname}', font='15px')],
     [sg.Text('-' * 80)],
-    [sg.Text(f'Version: {md.AppVersion}', font='15px'), sg.Button('Check Update', key='check_update', size=(18, 1), font='15px')],
-    [sg.Text('Update Status:'), sg.Text('...', key='txtExtra', visible=True)]
+    [sg.Text(f'{md.lngAboutTab_lblVersion} {md.AppVersion}', font='15px'), sg.Button(f'{md.lngAboutTab_BtnCheckUpdate}', key='check_update', size=(18, 1), font='15px')],
+    [sg.Text(f'{md.lngAboutTab_lbl1}'), sg.Text('...', key='txtExtra', visible=True)]
 ]
 
 layout = [
-    [sg.TabGroup([[sg.Tab('Main', main), sg.Tab(
-    'Settings', settings), sg.Tab('About', about)]])],
+    [sg.TabGroup([[sg.Tab(f'{md.lngMainTab}', main), sg.Tab(
+    f'{md.lngSettingsTab}', settings), sg.Tab(f'{md.lngAboutTab}', about)]])],
 ]
 
 window = sg.Window(f"{md.AppName}", layout, size=(460, 250), icon="./static/img/icons/favicon.ico")
@@ -68,18 +68,18 @@ while True:
         md.stgDownloadPath = values['stg_downloadpath']
 
         md.SaveSettings(md.stgTheme, md.stgLang, md.stgDownloadPath)
-        sg.popup('All settings saved', title='Success')
+        sg.popup(f'{md.lngSettingsTab_MsgSuccess}', title='Success')
         md.SaveLogs('Settings saved successfully')
 
     if event == 'check_update':
         md.checkUpdate()
         if md.needUpdate == True:
-            msg = str('There is a new update.')
+            msg = str(f'{md.lngAboutTab_lbl2}')
             window['txtExtra'].Update(value=f'{msg}')
 
             window['txtExtra'].Update(value=f'{md.updateMsg}')
         elif md.needUpdate == False:
-            msg = str('There is no update!')
+            msg = str(f'{md.lngAboutTab_lbl3}')
             window['txtExtra'].Update(value=f'{msg}')
     
     if event == sg.WIN_CLOSED or event == 'Exit':

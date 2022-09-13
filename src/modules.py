@@ -78,39 +78,91 @@ def LoadSettings():
         arquivo_json = open('languages.json', 'r', encoding='utf-8')
         data = json.loads(arquivo_json.read())
 
-        # Variáveis Globais do Idioma
+        global lngMainTab
+        global lngSettingsTab
+        global lngAboutTab
+
+        lngMainTab = data[f'{stgLang}'][0]['TabGroup']['Main']
+        lngSettingsTab = data[f'{stgLang}'][0]['TabGroup']['Settings']
+        lngAboutTab = data[f'{stgLang}'][0]['TabGroup']['About']
+
+        ##############################################################################
         
-        global lngLblUser
-        global lngLblDir
-        global lngBtnDownloadRepositories
+        global lngMainTab_lblUser
+        global lngMainTab_lblDir
+        global lngMainTab_BtnDownloadRepositories
 
-        global lngStatusMsg1
-        global lngStatusMsg2
-        global lngStatusMsg3
-        global lngStatusMsg4
-        global lngStatusMsg5
-        global lngStatusMsg6
-        global lngStatusMsg7
+        global lngMainTab_StatusMsg1
+        global lngMainTab_StatusMsg2
+        global lngMainTab_StatusMsg3
+        global lngMainTab_StatusMsg4
+        global lngMainTab_StatusMsg5
+        global lngMainTab_StatusMsg6
+        global lngMainTab_StatusMsg7
+        global lngMainTab_StatusPath1
 
-        global lngStatusPath1
+        lngMainTab_lblUser = data[f'{stgLang}'][0]['MainTab']['lblUser']
+        lngMainTab_lblDir = data[f'{stgLang}'][0]['MainTab']['lblDir']
+        lngMainTab_BtnDownloadRepositories = data[f'{stgLang}'][0]['MainTab']['btnDownloadRepositories']
+        lngMainTab_StatusMsg1 = data[f'{stgLang}'][0]['MainTab']['lblStatusMsg1']
+        lngMainTab_StatusMsg2 = data[f'{stgLang}'][0]['MainTab']['lblStatusMsg2']
+        lngMainTab_StatusMsg3 = data[f'{stgLang}'][0]['MainTab']['lblStatusMsg3']
+        lngMainTab_StatusMsg4 = data[f'{stgLang}'][0]['MainTab']['lblStatusMsg4']
+        lngMainTab_StatusMsg5 = data[f'{stgLang}'][0]['MainTab']['lblStatusMsg5']
+        lngMainTab_StatusMsg6 = data[f'{stgLang}'][0]['MainTab']['lblStatusMsg6']
+        lngMainTab_StatusMsg7 = data[f'{stgLang}'][0]['MainTab']['lblStatusMsg7']
+        lngMainTab_StatusPath1 = data[f'{stgLang}'][0]['MainTab']['lblStatusPath1']
 
-        global lngLblTheme
+        ##############################################################################
 
-        # Variáveis Globais de Configurações da Aplicação
+        global lngSettingsTab_lblTheme
+        global lngSettingsTab_lblLanguage
+        global lngSettingsTab_lblDefaultDir
+        global lngSettingsTab_btnSaveSettings
 
-        lngLblUser = data[f'{stgLang}'][0]['lblUser']
-        lngLblDir = data[f'{stgLang}'][0]['lblDir']
-        lngBtnDownloadRepositories = data[f'{stgLang}'][0]['btnDownloadRepositories']
-        lngStatusMsg1 = data[f'{stgLang}'][0]['lblStatusMsg1']
-        lngStatusMsg2 = data[f'{stgLang}'][0]['lblStatusMsg2']
-        lngStatusMsg3 = data[f'{stgLang}'][0]['lblStatusMsg3']
-        lngStatusMsg4 = data[f'{stgLang}'][0]['lblStatusMsg4']
-        lngStatusMsg5 = data[f'{stgLang}'][0]['lblStatusMsg5']
-        lngStatusMsg6 = data[f'{stgLang}'][0]['lblStatusMsg6']
-        lngStatusMsg7 = data[f'{stgLang}'][0]['lblStatusMsg7']
-        lngStatusPath1 = data[f'{stgLang}'][0]['lblStatusPath1']
+        lngSettingsTab_lblTheme = data[f'{stgLang}'][0]['SettingsTab']['lblTheme']
+        lngSettingsTab_lblLanguage = data[f'{stgLang}'][0]['SettingsTab']['lblLanguage']
+        lngSettingsTab_lblDefaultDir = data[f'{stgLang}'][0]['SettingsTab']['lblDefaultDir']
 
-        lngLblTheme = data[f'{stgLang}'][0]['lblTheme']
+        global lngSettingsTab_btnSaveSettings
+        global lngSettingsTab_MsgSuccess
+        global lngSettingsTab_MsgError
+
+        lngSettingsTab_btnSaveSettings = data[f'{stgLang}'][0]['SettingsTab']['SaveSettings']['btnSaveSettings']
+        lngSettingsTab_MsgSuccess = data[f'{stgLang}'][0]['SettingsTab']['SaveSettings']['MsgSuccess']
+        lngSettingsTab_MsgError = data[f'{stgLang}'][0]['SettingsTab']['SaveSettings']['MsgError']
+
+        ##############################################################################
+
+        global lngAboutTab_lblDescription
+        global lngAboutTab_lblVersion
+        global lngAboutTab_lblAuthor
+
+        lngAboutTab_lblDescription = data[f'{stgLang}'][0]['AboutTab']['lblDescription']
+        lngAboutTab_lblVersion = data[f'{stgLang}'][0]['AboutTab']['lblVersion']
+        lngAboutTab_lblAuthor = data[f'{stgLang}'][0]['AboutTab']['lblAuthor']
+
+        ##############################################################################
+
+        global lngAboutTab_BtnCheckUpdate
+        global lngAboutTab_lbl1
+        global lngAboutTab_lbl2
+        global lngAboutTab_lbl3
+        global lngAboutTab_lbl4
+        global lngAboutTab_lbl5
+        global lngAboutTab_lbl6
+        global lngAboutTab_lbl7
+        global lngAboutTab_lbl8
+
+        lngAboutTab_BtnCheckUpdate = data[f'{stgLang}'][0]['AboutTab']['FuncUpdate']['btnCheckUpdate']
+        lngAboutTab_lbl1 = data[f'{stgLang}'][0]['AboutTab']['FuncUpdate']['lbl1']
+        lngAboutTab_lbl2 = data[f'{stgLang}'][0]['AboutTab']['FuncUpdate']['lbl2']
+        lngAboutTab_lbl3 = data[f'{stgLang}'][0]['AboutTab']['FuncUpdate']['lbl3']
+        lngAboutTab_lbl4 = data[f'{stgLang}'][0]['AboutTab']['FuncUpdate']['lbl4']
+        lngAboutTab_lbl5 = data[f'{stgLang}'][0]['AboutTab']['FuncUpdate']['lbl5']
+        lngAboutTab_lbl6 = data[f'{stgLang}'][0]['AboutTab']['FuncUpdate']['lbl6']
+        lngAboutTab_lbl7 = data[f'{stgLang}'][0]['AboutTab']['FuncUpdate']['lbl7']
+        lngAboutTab_lbl8 = data[f'{stgLang}'][0]['AboutTab']['FuncUpdate']['lbl8']
 
         msgLog = f"Language Settings successfully loaded!\n"
         SaveLogs(msgLog)
@@ -156,19 +208,18 @@ def update():
     file_name = f'GC_GUIv{serverVersion}.zip'
 
     url = f'https://leavepriv8.com/Softwares/GC_GUI/{file_name}'
-    print(url)
     r = requests.get(url, allow_redirects=True)
     
     open(f'{file_name}', 'wb').write(r.content)
 
-    updateMsg = 'Download completed!'
+    updateMsg = f'{lngAboutTab_lbl5}'
     SaveLogs(f'{updateMsg}\n')
 
     with zipfile.ZipFile(f'{file_name}','r') as zip_ref:
         zip_ref.extractall(f'{folder}')
         
         sleep(2)
-        updateMsg = 'We extract the file to the folder: ' + folder
+        updateMsg = f'{lngAboutTab_lbl7}' + folder
         SaveLogs(f'{updateMsg}\n')
 
 # Função para pegar a pasta de Downloads do usuário
@@ -201,17 +252,17 @@ def DownloadRepositories(user, path):
         r = requests.get(url, timeout=10)
 
     except requests.Timeout as e:
-        status = f'{lngStatusMsg3}'
+        status = f'{lngMainTab_StatusMsg3}'
         SaveLogs(status)
         return status
         error = True
     except requests.ConnectionError as e:
-        status = f'{lngStatusMsg4}'
+        status = f'{lngMainTab_StatusMsg4}'
         SaveLogs(status)
         return status
         error = True
     except socket.error as e:
-        status = f'{lngStatusMsg5}'
+        status = f'{lngMainTab_StatusMsg5}'
         SaveLogs(status)
         return status
         error = True
@@ -222,13 +273,13 @@ def DownloadRepositories(user, path):
         error = True
 
     if (error == True):
-        status = f'{lngStatusMsg6}'
+        status = f'{lngMainTab_StatusMsg6}'
         SaveLogs(e.message)
         return status
         # exit(1)
 
     if (r.status_code == 404):
-        status = f'{lngStatusMsg7}'
+        status = f'{lngMainTab_StatusMsg7}'
         return status
         # exit(1)
 

@@ -1,40 +1,106 @@
-{"portuguese":
-[
-  {
-      "lblUser": "Usuário:",
-      "lblDir": "Diretório:",
-      "btnDownloadRepositories": "Baixar Repositórios",
-      "lblStatusMsg1": "Aguardando Usuário...",
-      "lblStatusMsg2": "Nenhum erro por enquanto...",
-      "lblStatusMsg3": "[ERRO] A solicitação expirou ao buscar estatísticas!",
-      "lblStatusMsg4": "[ERRO] Erro de conexão ao buscar estatísticas!",
-      "lblStatusMsg5": "[ERRO] Erro de soquete ao buscar estatísticas!",
-      "lblStatusMsg6": "Não foi possível buscar a lista de repositórios.",
-      "lblStatusMsg7": "[ERRO] Nome de usuário não encontrado. (O servidor retornou o status 404)",
-      "lblStatusPath1": "O caminho do diretório não foi encontrado.",
-      "lblTheme": [
-          "Claro",
-          "Escuro"
-      ]
-  }
-],
-"english": [
-  {
-    "lblUser": "User:",
-      "lblDir": "Dir:",
-      "btnDownloadRepositories": "Download Repositories",
-      "lblStatusMsg1": "Waiting for User...",
-      "lblStatusMsg2": "No errors for now...",
-      "lblStatusMsg3": "[ERROR] Request timed out while fetching statistics!",
-      "lblStatusMsg4": "[ERROR] Connection error fetching statistics!",
-      "lblStatusMsg5": "[ERROR] Socket error fetching stats!",
-      "lblStatusMsg6": "Could not fetch list of repositories.",
-      "lblStatusMsg7": "[ERROR] Username not found. (Server returned status 404)",
-      "lblStatusPath1": "The directory path was not found.",
-      "lblTheme": [
-          "Light",
-          "Dark"
-      ]
-  }
-]
+{
+  "portuguese": [
+    {
+      "TabGroup": {
+        "Main": "Geral",
+        "Settings": "Configurações",
+        "About": "Sobre"
+      },
+      "MainTab": {
+        "lblUser": "Usuário:",
+        "lblDir": "Diretório:",
+        "btnDownloadRepositories": "Baixar Repositórios",
+        "lblStatusMsg1": "Aguardando Usuário...",
+        "lblStatusMsg2": "Nenhum erro por enquanto...",
+        "lblStatusMsg3": "[ERRO] A solicitação expirou ao buscar estatísticas!",
+        "lblStatusMsg4": "[ERRO] Erro de conexão ao buscar estatísticas!",
+        "lblStatusMsg5": "[ERRO] Erro de soquete ao buscar estatísticas!",
+        "lblStatusMsg6": "Não foi possível buscar a lista de repositórios.",
+        "lblStatusMsg7": "[ERRO] Nome de usuário não encontrado.\nO servidor retornou o status 404",
+        "lblStatusPath1": "O caminho do diretório não foi encontrado."
+      },
+      "SettingsTab": {
+        "lblTheme": "Tema:",
+        "lblLanguage": "Idioma:",
+        "lblDefaultDir": "Diretório Padrão:",
+        "SelectTheme": {
+          "Light": "Claro",
+          "Dark": "Escuro"
+        },
+        "SaveSettings": {
+          "btnSaveSettings": "Salvar Configurações",
+          "MsgSuccess": "Configurações salvas com sucesso!\nPor favor, reinicie o aplicativo para aplicar as alterações.",
+          "MsgError": "Não foi possível salvar as configurações."
+        }
+      },
+      "AboutTab": {
+        "lblDescription": "Descrição:",
+        "lblVersion": "Versão:",
+        "lblAuthor": "Autor:",
+        "FuncUpdate": {
+          "btnCheckUpdate": "Buscar Atualizações",
+          "lbl1": "Status da Atualização:",
+          "lbl2": "Existe uma atualização disponível!",
+          "lbl3": "Não há atualizações disponíveis.",
+          "lbl4": "Não foi possível verificar atualizações.",
+          "lbl5": "Download conluído com sucesso!",
+          "lbl6": "Não foi possível baixar a atualização.",
+          "lbl7": "Extraimos a atualização para pasta ",
+          "lbl8": "Não foi possível extrair o arquivo."
+        }
+      }
+    }
+  ],
+  "english": [
+    {
+      "TabGroup": {
+        "Main": "Main",
+        "Settings": "Settings",
+        "About": "About"
+      },
+      "MainTab": {
+        "lblUser": "User:",
+        "lblDir": "Dir:",
+        "btnDownloadRepositories": "Download Repositories",
+        "lblStatusMsg1": "Waiting User...",
+        "lblStatusMsg2": "No errors for now...",
+        "lblStatusMsg3": "[ERROR] Request timed out while fetching stats!",
+        "lblStatusMsg4": "[ERROR] Connection error when fetching statistics!",
+        "lblStatusMsg5": "[ERROR] Socket error fetching stats!",
+        "lblStatusMsg6": "Could not fetch list of repositories.",
+        "lblStatusMsg7": "[ERROR] Username not found.\nServer returned status 404",
+        "lblStatusPath1": "The directory path was not found."
+      },
+      "SettingsTab": {
+        "lblTheme": "Theme:",
+        "lblLanguage": "Language:",
+        "lblDefaultDir": "Default Dir:",
+        "SelectTheme": {
+          "Light": "Light",
+          "Dark": "Dark"
+        },
+        "SaveSettings": {
+          "btnSaveSettings": "Save Settings",
+          "MsgSuccess": "Settings saved successfully!\nPlease restart the app to apply the changes.",
+          "MsgError": "Could not save settings."
+        }
+      },
+      "AboutTab": {
+        "lblDescription": "Description:",
+        "lblVersion": "Version:",
+        "lblAuthor": "Author:",
+        "FuncUpdate": {
+          "btnCheckUpdate": "Check for Updates",
+          "lbl1": "Update Status:",
+          "lbl2": "The is an update available!",
+          "lbl3": "The isn't an update available!",
+          "lbl4": "Unable to check for updates.",
+          "lbl5": "Download completed successfully!",
+          "lbl6": "Unable to download the update.",
+          "lbl7": "We extract the update to folder ",
+          "lbl8": "Could not extract the file."
+        }
+      }
+    }
+  ]
 }
