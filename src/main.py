@@ -1,7 +1,10 @@
+from time import sleep
+
 import PySimpleGUI as sg
 import requests
 
 import modules as md
+
 
 md.LoadSettings()
 
@@ -30,11 +33,13 @@ settings = [
 ]
 
 about = [
+    
     [sg.Text(f'{md.AppName}', font='15px')],
     [sg.Text(f'Description: {md.AppDescription}', font='15px')],
     [sg.Text(f'Created by: {md.AppAuthor} - {md.AppAuthorNickname}', font='15px')],
-    [sg.Text(f'Version: {md.AppVersion}', font='15px')],
-    [sg.Button('Check Update', key='check_update', size=(18, 1), font='15px')]
+    [sg.Text('-' * 80)],
+    [sg.Text(f'Version: {md.AppVersion}', font='15px'), sg.Button('Check Update', key='check_update', size=(18, 1), font='15px')],
+    [sg.Text('Update Status:'), sg.Text('...', key='txtExtra', visible=True)]
 ]
 
 layout = [
@@ -42,7 +47,7 @@ layout = [
     'Settings', settings), sg.Tab('About', about)]])],
 ]
 
-window = sg.Window(f"{md.AppName}", layout, size=(460, 200), icon="./static/img/icons/favicon.ico")
+window = sg.Window(f"{md.AppName}", layout, size=(460, 250), icon="./static/img/icons/favicon.ico")
 
 while True:
     event, values = window.read()
@@ -65,5 +70,17 @@ while True:
         md.SaveSettings(md.stgTheme, md.stgLang, md.stgDownloadPath)
         sg.popup('All settings saved', title='Success')
         md.SaveLogs('Settings saved successfully')
+
+    if event == 'check_update':
+        md.checkUpdate()
+        if md.needUpdate == True:
+            msg = str('There is a new update.')
+            window['txtExtra'].Update(value=f'{msg}')
+
+            window['txtExtra'].Update(value=f'{md.updateMsg}')
+        elif md.needUpdate == False:
+            msg = str('There is no update!')
+            window['txtExtra'].Update(value=f'{msg}')
+    
     if event == sg.WIN_CLOSED or event == 'Exit':
         break

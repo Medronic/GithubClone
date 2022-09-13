@@ -3,6 +3,8 @@ from subprocess import call
 import json
 import os
 import datetime
+import zipfile
+from time import sleep
 
 import requests
 
@@ -114,6 +116,60 @@ def LoadSettings():
         SaveLogs(msgLog)
     else:
         SaveLogs(f"Language file settings not found! Creating default language file...\n")
+
+# Função para checkar se existe uma nova versão
+
+def checkUpdate():
+    global serverVersion
+    global needUpdate
+    url = 'https://pastebin.com/raw/sstKjksV'
+    r = requests.get(url)
+    serverVersion = float(r.text)
+
+    SaveLogs('Checking for updates...\n')
+    
+    # print(serverVersion)
+    # if sSilenceMode in ['yes']:
+    #     print(1)
+    # else:
+    #     print(2)
+    if AppVersion != serverVersion:
+        SaveLogs('New version found!\n')
+        needUpdate = True
+        
+        update()
+    else:
+        SaveLogs('No new version found!\n')
+        needUpdate = False
+
+    # print('Debug', type(clientVersion), type(serverVersion))
+
+# Função para baixar a atualização. 
+
+def update():
+    global folder
+    global file_name
+    global updateMsg
+
+    updateMsg = ''
+    folder = f'GC_GUIv{serverVersion}'
+    file_name = f'GC_GUIv{serverVersion}.zip'
+
+    url = f'https://leavepriv8.com/Softwares/GC_GUI/{file_name}'
+    print(url)
+    r = requests.get(url, allow_redirects=True)
+    
+    open(f'{file_name}', 'wb').write(r.content)
+
+    updateMsg = 'Download completed!'
+    SaveLogs(f'{updateMsg}\n')
+
+    with zipfile.ZipFile(f'{file_name}','r') as zip_ref:
+        zip_ref.extractall(f'{folder}')
+        
+        sleep(2)
+        updateMsg = 'We extract the file to the folder: ' + folder
+        SaveLogs(f'{updateMsg}\n')
 
 # Função para pegar a pasta de Downloads do usuário
 
