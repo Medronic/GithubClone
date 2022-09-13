@@ -10,6 +10,7 @@ Clone all github repositories from a user
 ## Features
 - Settings
 - Multi Language
+- Check Updates
 
 ## To do
 - [ ] Clone repositories from Organizations
