@@ -58,7 +58,7 @@ while True:
                 md.DownloadRepositories(values['github_user'], values['download_path'])
                 window['lblstatus'].update(f"{md.status}")
             else:
-                sg.popup(f'{md.lngStatusPath1}', title='Erro')
+                sg.popup(f'{md.lngMainTab_StatusPath1}', title='Error')
         else:
             sg.popup("Provide a username", title="Error")
 
@@ -69,7 +69,7 @@ while True:
 
         md.SaveSettings(md.stgTheme, md.stgLang, md.stgDownloadPath)
         sg.popup(f'{md.lngSettingsTab_MsgSuccess}', title='Success')
-        md.SaveLogs('Settings saved successfully')
+        md.SaveLogs('Settings saved successfully\n')
 
     if event == 'check_update':
         md.checkUpdate()
