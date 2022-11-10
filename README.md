@@ -8,12 +8,13 @@ Clone all github repositories from a user
 <a href="https://github.com/Medronic/GithubClone/releases/latest">Latest Release</a>
 
 ## Features
+- Clone repositories from Users and Organizations
 - Settings
 - Multi Language
 - Check Updates
 
 ## To do
-- [ ] Clone repositories from Organizations
+- [ ]
 
 ## Requirements
 - PySimpleGUI
