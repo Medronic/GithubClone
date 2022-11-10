@@ -18,6 +18,8 @@ SAVE_SETTINGS = "Saving settings..."
 SAVE_SETTINGS_SUCCESS = "Settings saved successfully!"
 SAVE_SETTINGS_ERROR = "Error saving settings!"
 
+url_base = 'https://api.github.com/'
+
 # Função para Salvar arquivos de Log
 
 def SaveLogs(p1):
@@ -89,6 +91,7 @@ def LoadSettings():
         ##############################################################################
         
         global lngMainTab_lblUser
+        global lngMainTab_checkUser
         global lngMainTab_lblDir
         global lngMainTab_BtnDownloadRepositories
 
@@ -102,6 +105,7 @@ def LoadSettings():
         global lngMainTab_StatusPath1
 
         lngMainTab_lblUser = data[f'{stgLang}'][0]['MainTab']['lblUser']
+        lngMainTab_checkUser = data[f'{stgLang}'][0]['MainTab']['checkUser']
         lngMainTab_lblDir = data[f'{stgLang}'][0]['MainTab']['lblDir']
         lngMainTab_BtnDownloadRepositories = data[f'{stgLang}'][0]['MainTab']['btnDownloadRepositories']
         lngMainTab_StatusMsg1 = data[f'{stgLang}'][0]['MainTab']['lblStatusMsg1']
@@ -241,11 +245,21 @@ def VerifyPath(path):
         return False
 
 # Função para baixar os repositórios
-def DownloadRepositories(user, path):
+def DownloadRepositories(user, path, isUser):
+    
+    if isUser == True:
+        # print("É um usuário")
+        url = url_base + 'users/{0}/repos'.format(user)
+        SubDownload(url, path)
+    elif isUser == False:
+        # print("É uma organização")
+        url = url_base + 'orgs/{0}/repos'.format(user)
+        SubDownload(url, path)
+
+def SubDownload(url, path):
+    error = False
     global status
 
-    url = 'https://api.github.com/users/{0}/repos'.format(user)
-    error = False
     status = f"No errors for now!"
 
     try:

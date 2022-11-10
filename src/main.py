@@ -10,10 +10,13 @@ md.LoadSettings()
 
 sg.theme("DarkPurple4")
 
+global IsUser
+IsUser = True
+
 DownloadFolder = md.GetDownloadPath()
 
 main = [
-    [sg.Text(f'{md.lngMainTab_lblUser}', key='lblUser'), sg.Input(key='github_user', size=(45, 1))],
+    [sg.Text(f'{md.lngMainTab_lblUser}', key='lblUser'), sg.Input(key='github_user', size=(20, 1)), sg.Checkbox(f'{md.lngMainTab_checkUser}', default=True, key='is_user')],
     [sg.Text(f'{md.lngMainTab_lblDir}', key='lblDir'), sg.Input(default_text=f'{DownloadFolder}', key='download_path', size=(42, 1))],
     
     [sg.Button(f'{md.lngMainTab_BtnDownloadRepositories}', key='download_repositories', size=(20, 1))],
@@ -55,7 +58,10 @@ while True:
     if event == 'download_repositories':
         if values['github_user'] != '':
             if md.VerifyPath(values['download_path']) == True:
-                md.DownloadRepositories(values['github_user'], values['download_path'])
+
+                IsUser = values['is_user']
+                print("AccountType: ", IsUser)
+                md.DownloadRepositories(values['github_user'], values['download_path'], IsUser)
                 window['lblstatus'].update(f"{md.status}")
             else:
                 sg.popup(f'{md.lngMainTab_StatusPath1}', title='Error')

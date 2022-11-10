@@ -8,6 +8,7 @@
       },
       "MainTab": {
         "lblUser": "Usuário:",
+        "checkUser": "É um usuário\n Não uma organização",
         "lblDir": "Diretório:",
         "btnDownloadRepositories": "Baixar Repositórios",
         "lblStatusMsg1": "Aguardando Usuário...",
@@ -60,6 +61,7 @@
       },
       "MainTab": {
         "lblUser": "User:",
+        "checkUser": "Is a user\nNot an organization",
         "lblDir": "Dir:",
         "btnDownloadRepositories": "Download Repositories",
         "lblStatusMsg1": "Waiting User...",
